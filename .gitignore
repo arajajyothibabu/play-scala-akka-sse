@@ -1,2 +1,8 @@
 *.class
 *.log
+
+.idea/
+*.iml
+project/project
+project/target
+target

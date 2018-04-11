@@ -15,7 +15,7 @@
 
         <script>
                 var stream = "/stream";
-                $(window).load(function() {
+                //window.load(function() {
                     setTimeout(function() {
                         if (stream === undefined) {
                             console.error("stream is undefined")
@@ -23,20 +23,20 @@
                             // start the EventSource which will open a streaming connection to the server
                             var source = new EventSource(stream);
                             // add the listener that will process incoming events
-                            source.addEventListener('item', function(e) {
+                            source.addEventListener('message', function(e) {
                                 console.log(e.data);
-                                $('<li/>', {text: e.item}).appendTo($("#list"));
+                                //$('<li/>', {text: e.item}).appendTo($("#list"));
                             }, false);
                             source.addEventListener('error', function(e) {
                                 if (e.eventPhase === EventSource.CLOSED) {
-                                    console.log("Connection was closed on error: " + e);
+                                    console.log("Connection was closed on error: ", e);
                                 } else {
-                                    console.log("Error occurred while streaming: " + e);
+                                    console.log("Error occurred while streaming: ", e);
                                 }
                             }, false);
                         }
                     }, 0);
-                });
+                //});
         </script>
     </body>
 </html>
